@@ -1,23 +1,20 @@
 # This is an example workflow that scans a Python open-source pacakge via a git URL
 # You can use this as an example for your own remote scans
-name: Scan darrenpmeyer/logging-formatter-anticrlf
+name: Scan One Project
 on:
   workflow_dispatch:
 
 jobs:
   endor-scan:
-    uses: endorlabs/endor-github-workflow/.github/workflows/scan-with-endorlabs.yml@v0
+    uses: kdogra4/endor-github-workflow/.github/workflows/scan-with-endorlabs.yml@main
     permissions:
       id-token: write      # allows authentication to Endor Labs using Actions OIDC JWT Token
       contents: read       # allows this job to clone org repos
     with:
-      git-url: "https://github.com/darrenpmeyer/logging-formatter-anticrlf.git" 
+      git-url: "https://github.com/kdogra4/test-private-repo.git" 
       namespace: ${{ vars.ENDOR_NAMESPACE }}
       upload-json: true
       is-pr: true
     secrets:
       endorlabs-api-auth: ${{ secrets.ENDORLABS_API_AUTH }}
-      # to operate on a private repo, generate a github access token with `repo` rights
-      # and create an orgization or repository secret named `GITHUB_ACCESS_TOKEN`, then
-      # uncomment the line below
-      # github-access-token: ${{ secrets.GITHUB_ACCESS_TOKEN }}
+      github-access-token: ${{ secrets.TOKEN }}
