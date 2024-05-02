@@ -12,8 +12,8 @@ jobs:
       contents: read       # allows this job to clone org repos
     with:
       git-url: "https://github.com/kdogra4/test-private-repo.git" 
-      namespace: ${{ vars.ENDOR_NAMESPACE }}
-      upload-json: true
+      namespace: kriti-learn
+      upload-json: false
       is-pr: true
     secrets:
       endorlabs-api-auth: ${{ secrets.ENDORLABS_API_AUTH }}
